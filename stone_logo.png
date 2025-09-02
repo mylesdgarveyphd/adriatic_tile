@@ -1,0 +1,145 @@
+<svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Enhanced marble filter: more realistic turbulence -->
+    <filter id="marbleFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08 0.15" numOctaves="4" seed="23" result="noise1"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.3 0.2" numOctaves="6" seed="87" result="noise2"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.08" numOctaves="3" seed="156" result="noise3"/>
+      <feComposite in="noise1" in2="noise2" operator="multiply" result="combined1"/>
+      <feComposite in="combined1" in2="noise3" operator="screen" result="finalNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="finalNoise" scale="35" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    
+    <!-- Edge fade gradient -->
+    <linearGradient id="fadeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5f1e8;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#f5f1e8;stop-opacity:0.8" />
+      <stop offset="30%" style="stop-color:#f5f1e8;stop-opacity:0" />
+    </linearGradient>
+    
+    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="70%" style="stop-color:#f5f1e8;stop-opacity:0" />
+      <stop offset="85%" style="stop-color:#f5f1e8;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f5f1e8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="fadeTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f1e8;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#f5f1e8;stop-opacity:0.8" />
+      <stop offset="30%" style="stop-color:#f5f1e8;stop-opacity:0" />
+    </linearGradient>
+    
+    <linearGradient id="fadeBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="70%" style="stop-color:#f5f1e8;stop-opacity:0" />
+      <stop offset="85%" style="stop-color:#f5f1e8;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f5f1e8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- More complex marble pattern with multiple vein layers -->
+    <pattern id="marble" patternUnits="userSpaceOnUse" width="320" height="300">
+      <rect width="400" height="300" fill="#f5f1e8"/>
+      
+      <!-- Primary veins - main structure -->
+      <path d="M0,45 C80,25 120,85 200,65 C280,45 320,95 320,75 
+               M0,95 C60,115 140,75 200,95 C260,115 320,85 320,105
+               M0,145 C70,165 130,125 200,145 C270,165 320,135 320,155
+               M0,195 C90,215 150,175 200,195 C250,215 320,185 320,205
+               M0,245 C85,265 145,225 200,245 C255,265 320,235 320,255" 
+            stroke="#e8ddd4" stroke-width="3" fill="none" opacity="0.7" filter="url(#marbleFilter)"/>
+      
+      <!-- Secondary veins - branching patterns -->
+      <path d="M50,20 C100,40 150,10 200,30 C250,50 320,20 320,40
+               M30,70 C80,90 130,60 180,80 C230,100 320,70 320,90
+               M20,120 C70,140 120,110 170,130 C220,150 320,120 320,140
+               M40,170 C90,190 140,160 190,180 C240,200 320,170 320,190
+               M25,220 C75,240 125,210 175,230 C225,250 320,220 320,240
+               M60,270 C110,290 160,260 210,280 C260,300 320,270 320,290" 
+            stroke="#ddd4c9" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#marbleFilter)"/>
+      
+      <!-- Tertiary veins - fine details -->
+      <path d="M10,35 C40,45 70,25 100,35 C130,45 160,25 190,35
+               M15,85 C45,95 75,75 105,85 C135,95 165,75 195,85
+               M25,135 C55,145 85,125 115,135 C145,145 175,125 205,135
+               M5,185 C35,195 65,175 95,185 C125,195 155,175 185,185
+               M35,235 C65,245 95,225 125,235 C155,245 185,225 215,235" 
+            stroke="#d4cbc0" stroke-width="1" fill="none" opacity="0.4" filter="url(#marbleFilter)"/>
+      
+      <!-- NEW: Major continuous veins for more salient marble effect -->
+      <path d="M0,80 C60,60 120,100 180,80 C240,60 280,100 320,80" 
+            stroke="#c9bfb4" stroke-width="4" fill="none" opacity="0.8" filter="url(#marbleFilter)"/>
+      <path d="M0,160 C80,140 140,180 200,160 C260,140 300,180 320,160" 
+            stroke="#c9bfb4" stroke-width="4" fill="none" opacity="0.8" filter="url(#marbleFilter)"/>
+      <path d="M0,30 C50,50 100,10 160,30 C220,50 270,10 320,30" 
+            stroke="#ccc2b7" stroke-width="3" fill="none" opacity="0.7" filter="url(#marbleFilter)"/>
+      <path d="M0,210 C70,190 130,230 190,210 C250,190 290,230 320,210" 
+            stroke="#ccc2b7" stroke-width="3" fill="none" opacity="0.7" filter="url(#marbleFilter)"/>
+      
+      <!-- Additional random vertical and horizontal veins -->
+      <path d="M80,0 C85,50 75,100 90,150 C80,200 85,250 75,300" 
+            stroke="#d9d0c5" stroke-width="2" fill="none" opacity="0.6" filter="url(#marbleFilter)"/>
+      <path d="M140,0 C135,40 150,80 130,120 C145,160 135,200 140,240 C150,280 135,300 140,300" 
+            stroke="#d6cdc2" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#marbleFilter)"/>
+      <path d="M200,0 C195,60 210,120 190,180 C205,240 200,300 200,300" 
+            stroke="#d9d0c5" stroke-width="2" fill="none" opacity="0.6" filter="url(#marbleFilter)"/>
+      <path d="M260,0 C255,30 270,70 250,110 C265,150 255,190 260,230 C270,270 255,300 260,300" 
+            stroke="#d6cdc2" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#marbleFilter)"/>
+      
+      <path d="M0,50 C40,55 80,45 120,50 C160,55 200,45 240,50 C280,55 320,45 320,50" 
+            stroke="#d6cdc2" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#marbleFilter)"/>
+      <path d="M0,110 C50,105 100,115 150,110 C200,105 250,115 300,110 C320,105 320,110 320,110" 
+            stroke="#d9d0c5" stroke-width="2" fill="none" opacity="0.6" filter="url(#marbleFilter)"/>
+      <path d="M0,180 C60,175 120,185 180,180 C240,175 300,185 320,180" 
+            stroke="#d6cdc2" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#marbleFilter)"/>
+      <path d="M0,240 C40,245 80,235 120,240 C160,245 200,235 240,240 C280,245 320,235 320,240" 
+            stroke="#d9d0c5" stroke-width="2" fill="none" opacity="0.6" filter="url(#marbleFilter)"/>
+      
+      <!-- Subtle background texture -->
+      <path d="M0,0 L320,0 L320,300 L0,300 Z" 
+            stroke="none" fill="#f7f3ea" opacity="0.3" filter="url(#marbleFilter)"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background with enhanced marble -->
+  <rect width="320" height="300" fill="url(#marble)"/>
+  
+  <!-- Edge fade overlays -->
+  <rect x="0" y="0" width="100" height="300" fill="url(#fadeLeft)"/>
+  <rect x="220" y="0" width="100" height="300" fill="url(#fadeRight)"/>
+  <rect x="0" y="0" width="320" height="90" fill="url(#fadeTop)"/>
+  <rect x="0" y="210" width="320" height="90" fill="url(#fadeBottom)"/>
+  
+  <!-- Main square frame (padding tightened) -->
+  <rect x="75" y="25" width="170" height="170" fill="#2c4a52"/>
+  
+  <!-- Inner background with marble -->
+  <rect x="85" y="35" width="150" height="150" fill="url(#marble)"/>
+  
+  <!-- Christian Cross -->
+  <rect x="125" y="50" width="10" height="35" fill="#2c4a52"/>
+  <rect x="115" y="60" width="30" height="10" fill="#2c4a52"/>
+  
+  <!-- Red squares (checkerboard) -->
+  <rect x="165" y="50" width="12" height="12" fill="#c44536"/>
+  <rect x="189" y="50" width="12" height="12" fill="#c44536"/>
+  <rect x="177" y="62" width="12" height="12" fill="#c44536"/>
+  <rect x="165" y="74" width="12" height="12" fill="#c44536"/>
+  <rect x="189" y="74" width="12" height="12" fill="#c44536"/>
+  
+  <!-- Waves INSIDE inner rectangle -->
+  <path d="M 85 140 Q 110 135 135 140 Q 160 145 185 140 Q 210 135 235 140" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  <path d="M 85 147 Q 110 142 135 147 Q 160 152 185 147 Q 210 142 235 147" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  <path d="M 85 154 Q 110 149 135 154 Q 160 159 185 154 Q 210 149 235 154" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  <path d="M 85 161 Q 110 156 135 161 Q 160 166 185 161 Q 210 156 235 161" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  <path d="M 85 168 Q 110 163 135 168 Q 160 173 185 168 Q 210 163 235 168" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  <path d="M 85 175 Q 110 170 135 175 Q 160 180 185 175 Q 210 170 235 175" 
+        stroke="#2c4a52" stroke-width="3" fill="none"/>
+  
+  <!-- Text (tightened padding) -->
+  <text x="160" y="235" font-family="Arial, sans-serif" font-size="46" font-weight="bold" text-anchor="middle" fill="#2c4a52">ADRIATIC</text>
+  <text x="160" y="262" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c4a52">TILE &amp; STONE</text>
+</svg>
